@@ -8,6 +8,6 @@ Currently the input file is deleted after value is read from the input file.
 Future improvements:
 - Improved closure of program
 - Option of deleting contents of input file instead of deleting input file itself
-- Impletment GUI
+- Implement GUI
 - Start/Stop functionality
 - Separate file access threads for input and output with multithreading controls.
