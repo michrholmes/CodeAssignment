@@ -64,7 +64,7 @@ namespace CodeAssignment1
             folderPath = null;
             while (folderPath == null)
             {
-                Console.Write("Path to folder> ");
+                Console.Write("Insert path folder> ");
                 DirectoryInfo path = new DirectoryInfo(Console.ReadLine().Replace("\"", ""));
                 if (!path.Exists)
                 {
