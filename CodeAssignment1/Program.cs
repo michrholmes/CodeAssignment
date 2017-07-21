@@ -38,7 +38,7 @@ namespace CodeAssignment1
         {
             Console.WriteLine("You are now using the Fibonacci calculator");
             Console.WriteLine("");
-            Console.WriteLine("Close the console window when you want application to stop.");
+            Console.WriteLine("Write and save \"q\" to input.txt file to quit program.");
             Console.WriteLine("");
         }
         private static void FileExistsUI()
@@ -106,21 +106,22 @@ namespace CodeAssignment1
             return fib[n];
 
         }
-        private static int GetIntegerFromFile(string file)
+        private static char GetCharacterFromFile(string file)
         {
             using (FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
             {
                 using (StreamReader sr = new StreamReader(fs))
                 {
                     //assertion is file is not empty;
-                    bool result = Int32.TryParse(sr.ReadLine(), out int number);
+                    bool result = Char.TryParse(sr.ReadLine(), out char character);
                     if (result)
                     {
-                        return number;
+                        return character;
                     }
+                   
                     else
                     {
-                        throw new Exception("Attempted conversion to int failed");
+                        throw new Exception("Conversion to char failed");
                     }
                 }
             }
@@ -136,19 +137,41 @@ namespace CodeAssignment1
             }
         }
         private static void ProcessFile(string file)
-        {
-            int inputValue = GetIntegerFromFile(file);
+        {   
+
 
             if (!IsInputValueValid(inputValue))
             {
-                throw new ArgumentOutOfRangeException("The number retrieved was <= 0 or was > than 46 ");
+                throw new ArgumentOutOfRangeException("The number retrieved was <= 0, was > than 46 or was not an integer");
             }
             else
             {
                 WriteOutput(folderPath + "\\output.txt", Fibonacci(inputValue));
             }
-            File.Delete(file);
+            //File.Delete(file);
         }
+        private static void IsQuit(char character)
+        {
+            if (character.Equals('q'))
+            {
+                Environment.Exit(0);
+            }
+
+        }
+        private static int IsInteger()
+        {
+            char inputCharValue = GetCharacterFromFile(file);
+            bool result = Int32.TryParse(inputCharValue, out int inputValue);
+            if (result)
+            {
+                return inputValue;
+            }
+            else
+            {
+                throw new Exception("Character is not a number");
+            }
+        }
+
         #endregion //End of Logic
     }
 }
