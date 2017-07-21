@@ -36,7 +36,7 @@ namespace CodeAssignment1
         }
         private static void DisplayWelcome()
         {
-            Console.WriteLine("Welcome to the Fibonacci calculator");
+            Console.WriteLine("You are now using the Fibonacci calculator");
             Console.WriteLine("");
             Console.WriteLine("Close the console window when you want application to stop.");
             Console.WriteLine("");
